@@ -2,9 +2,13 @@
   Desafio Ambar
 </h1>
 
+<h3 align="center">
+  <span>Link para download do apk no qrcode</span>
+</h1h3>
 <h1 align="center">
   <center><img src="https://user-images.githubusercontent.com/40500767/104075149-b4aa6980-51f0-11eb-828d-2f710bc6aa53.png" width="300px;"/></center>
 </h1>
+
 
 <h1 align="center">
   <img src="https://user-images.githubusercontent.com/40500767/104074004-dbb36c00-51ed-11eb-90ea-a9d20e1701c9.gif" width="300px;" alt="Glauco Nascimento"/>
