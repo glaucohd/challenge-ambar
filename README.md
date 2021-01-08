@@ -1,16 +1,49 @@
-# challenge_get_user
+<h1 align="center">
+  Desafio Ambar
+</h1>
 
-A new Flutter project.
 
-## Getting Started
+<div class="holder">
 
-This project is a starting point for a Flutter application.
+  <div class="imagem" data-title="legenda # 1">
+    <img src="https://user-images.githubusercontent.com/40500767/104074004-dbb36c00-51ed-11eb-90ea-a9d20e1701c9.gif" width="300px;" alt="Glauco Nascimento"/>
+  </div>
 
-A few resources to get you started if this is your first Flutter project:
+  <div class="imagem" data-title="legenda # 2">
+    <img src="https://user-images.githubusercontent.com/40500767/104074514-1cf84b80-51ef-11eb-968e-c73bc48175aa.gif" width="300px;" alt="Glauco Nascimento"/>
+  </div>
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+</div>
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+ O objetivo desse desafio é utilizar a API do GitHub para listar os 100 primeiros repositórios públicos criados no GitHub e ao clicarmos em algum dos repositórios, o aplicativo abra o link em um browser.
+ 
+ 
+
+## Construído com
+
+- [Flutter](https://flutter.dev/)
+- [Dart](https://dart.dev/)
+
+
+
+
+## Autor
+
+<table>
+  <tr>
+    <td align="center">
+      <a href="http://github.com/glaucohd/">
+        <img src="https://avatars0.githubusercontent.com/u/40500767?v=4" width="100px;" alt="Glauco Nascimento"/>
+        <br />
+        <sub>
+          <b>Glauco Nascimento</b>
+        </sub>
+       </a>
+       <br />
+    </td>
+  </tr>
+</table>
+
+## Licença
+
+Este projeto está licenciado sob a licença MIT - consulte o arquivo `LICENSE.md` para obter detalhes.
