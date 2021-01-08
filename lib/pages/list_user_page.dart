@@ -18,9 +18,16 @@ class _ListUserPageState extends State<ListUserPage> {
   @override
   void initState() {
     super.initState();
-
     _bloc.getUser().then((map) {
       user = map;
+    });
+  }
+
+  Future<void> reloader() async {
+    setState(() {
+      _bloc.getUser().then((map) {
+        user = map;
+      });
     });
   }
 
@@ -30,6 +37,7 @@ class _ListUserPageState extends State<ListUserPage> {
       appBar: AppBar(
         backgroundColor: ColorConsntant.kprimaryColor,
         title: Text(StringConstants.title),
+        actions: [IconButton(icon: Icon(Icons.refresh), onPressed: reloader)],
       ),
       body: FutureBuilder(
         future: _bloc.getUser(),
@@ -43,35 +51,47 @@ class _ListUserPageState extends State<ListUserPage> {
             default:
               if (snapshot.hasError)
                 return Container(
-                child: Center(
-                  child: Text('Tente Novamente mais tarde..'),
-                ),
+                  child: Center(
+                    child: Text('Tente Novamente mais tarde..'),
+                  ),
                 );
               else
-                return ListView.builder(
-                  itemCount: user.length,
-                  itemBuilder: (context, index) {
-                    return Card(
-                      child: ListTile(
-                        leading: CircleAvatar(
-                          backgroundImage:
-                              NetworkImage(user[index].owner.avatarUrl),
+                return RefreshIndicator(
+                  onRefresh: reloader,
+                  child: ListView.builder(
+                    itemCount: user.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: Card(
+                          elevation: 5,
+                          child: Column(
+                            children: [
+                              ListTile(
+                                leading: CircleAvatar(
+                                  backgroundImage:
+                                      NetworkImage(user[index].owner.avatarUrl),
+                                ),
+                                title: Text(
+                                  user[index].name,
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 18),
+                                ),
+                                subtitle: Text(
+                                  user[index].owner.login,
+                                  style: TextStyle(fontSize: 15),
+                                ),
+                                onTap: () {
+                                  _bloc.getUrlRepository(user[index]);
+                                },
+                              ),
+                            ],
+                          ),
                         ),
-                        title: Text(
-                          user[index].name,
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 18),
-                        ),
-                        subtitle: Text(
-                          user[index].owner.login,
-                          style: TextStyle(fontSize: 15),
-                        ),
-                        onTap: () {
-                          _bloc.getUrlRepository(user[index]);
-                        },
-                      ),
-                    );
-                  },
+                      );
+                    },
+                  ),
                 );
           }
         },
