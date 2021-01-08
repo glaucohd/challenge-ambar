@@ -2,18 +2,20 @@
   Desafio Ambar
 </h1>
 
+<center><img src="https://user-images.githubusercontent.com/40500767/104075149-b4aa6980-51f0-11eb-828d-2f710bc6aa53.png" width="300px;"/></center>
 
-<div class="holder">
 
-  <div class="imagem" data-title="legenda # 1">
+
+
+<div class="box">
     <img src="https://user-images.githubusercontent.com/40500767/104074004-dbb36c00-51ed-11eb-90ea-a9d20e1701c9.gif" width="300px;" alt="Glauco Nascimento"/>
-  </div>
-
-  <div class="imagem" data-title="legenda # 2">
-    <img src="https://user-images.githubusercontent.com/40500767/104074514-1cf84b80-51ef-11eb-968e-c73bc48175aa.gif" width="300px;" alt="Glauco Nascimento"/>
-  </div>
 
 </div>
+<div class="box">
+    <img src="https://user-images.githubusercontent.com/40500767/104074514-1cf84b80-51ef-11eb-968e-c73bc48175aa.gif" width="300px;" alt="Glauco Nascimento"/>
+</div>
+
+
 
  O objetivo desse desafio é utilizar a API do GitHub para listar os 100 primeiros repositórios públicos criados no GitHub e ao clicarmos em algum dos repositórios, o aplicativo abra o link em um browser.
  
