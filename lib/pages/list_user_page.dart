@@ -1,5 +1,5 @@
 import 'package:challenge_get_user/bloc/list_user_bloc.dart';
-import 'package:challenge_get_user/components/custom_circular_progress.dart';
+import 'package:challenge_get_user/components/skeleton.dart';
 import 'package:challenge_get_user/constants/color_constant.dart';
 import 'package:challenge_get_user/constants/string_constant.dart';
 import 'package:challenge_get_user/models/user.dart';
@@ -13,6 +13,7 @@ class ListUserPage extends StatefulWidget {
 class _ListUserPageState extends State<ListUserPage> {
   final _bloc = ListUserBloc();
   List<User> user;
+  var lengh = [''];
   String url;
 
   @override
@@ -21,6 +22,8 @@ class _ListUserPageState extends State<ListUserPage> {
     _bloc.getUser().then((map) {
       user = map;
     });
+    
+    
   }
 
   Future<void> reloader() async {
@@ -31,6 +34,8 @@ class _ListUserPageState extends State<ListUserPage> {
     });
   }
 
+  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,13 +45,13 @@ class _ListUserPageState extends State<ListUserPage> {
         actions: [IconButton(icon: Icon(Icons.refresh), onPressed: reloader)],
       ),
       body: FutureBuilder(
-        future: _bloc.getUser(),
+        future: _bloc.getUser() == null ? lengh : _bloc.getUser(),
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.waiting:
             case ConnectionState.none:
               return Center(
-                child: CustomCircularProgress(),
+                child: Skeleton(length: user.length),
               );
             default:
               if (snapshot.hasError)
@@ -59,7 +64,7 @@ class _ListUserPageState extends State<ListUserPage> {
                 return RefreshIndicator(
                   onRefresh: reloader,
                   child: ListView.builder(
-                    itemCount: user.length,
+                    itemCount: user.length == null ? lengh : user.length,
                     itemBuilder: (context, index) {
                       return Padding(
                         padding: const EdgeInsets.all(5.0),
