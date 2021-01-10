@@ -2,12 +2,13 @@
   Desafio Ambar
 </h1>
 
-<h3 align="center">
+<p align="center">
   <span>Link para download do apk no qrcode</span>
-</h1h3>
-<h1 align="center">
+</p>
+
+<p align="center">
   <center><img src="https://user-images.githubusercontent.com/40500767/104075149-b4aa6980-51f0-11eb-828d-2f710bc6aa53.png" width="300px;"/></center>
-</h1>
+</p>
 
 
 <h1 align="center">
