@@ -1,7 +1,7 @@
-import 'package:bloc_pattern/bloc_pattern.dart';
-import 'package:challenge_get_user/bloc/list_controller.dart';
-import 'package:challenge_get_user/pages/list_user_page.dart';
+import 'package:challenge_get_user/components/splash_screen.dart';
 import 'package:flutter/material.dart';
+import './utils/routes.dart';
+import './pages/list_user_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,10 +17,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: BlocProvider(
-        blocs: [Bloc((i) => ListController())],
-        child: ListUserPage(),
-      ),
+      home: SplashScreen(),
+      routes: {
+        Routes.LIST_USER: (context) => ListUserPage(),
+      },
     );
   }
 }

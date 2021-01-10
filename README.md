@@ -10,7 +10,6 @@
   <img src="https://user-images.githubusercontent.com/40500767/104075149-b4aa6980-51f0-11eb-828d-2f710bc6aa53.png" width="300px;"/>
 </p>
 
-
 <h1 align="center">
   <img src="https://user-images.githubusercontent.com/40500767/104074004-dbb36c00-51ed-11eb-90ea-a9d20e1701c9.gif" width="300px;" alt="Glauco Nascimento"/>
   <img src="https://user-images.githubusercontent.com/40500767/104074514-1cf84b80-51ef-11eb-968e-c73bc48175aa.gif" width="300px;" alt="Glauco Nascimento"/>

@@ -1,11 +1,13 @@
+import 'package:flutter/material.dart';
+
 import 'package:challenge_get_user/bloc/list_controller.dart';
 import 'package:challenge_get_user/components/skeleton.dart';
 import 'package:challenge_get_user/constants/color_constant.dart';
 import 'package:challenge_get_user/constants/string_constant.dart';
 import 'package:challenge_get_user/models/user.dart';
-import 'package:flutter/material.dart';
 
 class ListUserPage extends StatefulWidget {
+
   @override
   _ListUserPageState createState() => _ListUserPageState();
 }
@@ -13,19 +15,10 @@ class ListUserPage extends StatefulWidget {
 class _ListUserPageState extends State<ListUserPage> {
   ListController controller = ListController();
 
-  List<User> user;
-  var lengh = [''];
-
-  @override
-  void initState() {
-    super.initState();
-    controller.getUser().then((map) {
-      user = map;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
+    final List<User> user = ModalRoute.of(context).settings.arguments as List<User>;
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: ColorConsntant.kprimaryColor,
@@ -38,7 +31,7 @@ class _ListUserPageState extends State<ListUserPage> {
         ],
       ),
       body: StreamBuilder(
-        stream: controller.outList,
+        stream: controller.litsUserOutput,
         builder: (context, snapshot) {
           return FutureBuilder(
             future: controller.getUser(),
@@ -60,7 +53,7 @@ class _ListUserPageState extends State<ListUserPage> {
                     return RefreshIndicator(
                       onRefresh: controller.reloader,
                       child: ListView.builder(
-                        itemCount: user.length == null ? lengh : user.length,
+                        itemCount: user.length,
                         itemBuilder: (context, index) {
                           return Padding(
                             padding: const EdgeInsets.all(5.0),

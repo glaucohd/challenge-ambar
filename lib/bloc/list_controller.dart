@@ -1,34 +1,35 @@
 import 'dart:async';
-import 'package:bloc_pattern/bloc_pattern.dart';
-import '../constants/service_constant.dart';
-import '../constants/string_constant.dart';
-import '../models/user.dart';
-import 'package:challenge_get_user/constants/string_constant.dart';
-import 'package:challenge_get_user/models/user.dart';
-import 'package:challenge_get_user/constants/service_constant.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';
 
-class ListController implements BlocBase {
+import 'package:challenge_get_user/constants/service_constant.dart';
+import 'package:challenge_get_user/constants/string_constant.dart';
+import 'package:challenge_get_user/models/user.dart';
+
+import '../constants/service_constant.dart';
+import '../constants/string_constant.dart';
+import '../models/user.dart';
+
+class ListController {
   List<User> user;
   String url;
 
-  var streamListController = StreamController();
+  StreamController streamListUser = StreamController();
 
-  Stream get outList => streamListController.stream;
-  Sink get inList => streamListController.sink;
 
-  @override
-  void dispose() {
-    streamListController.close();
+  Stream get litsUserOutput => streamListUser.stream;
+  Sink get listUserInput => streamListUser.sink;
+
+  void dispose(){
+    streamListUser.close();
   }
-
+  
   Future<void> reloader() async {
     List listUser = await getUser();
-    inList.add(listUser);
+    listUserInput.add(listUser);
   }
-
+  
   Future<List<User>> getUser() async {
     try {
       List<User> listUser = List();
@@ -63,14 +64,5 @@ class ListController implements BlocBase {
     launchURL(url);
   }
 
-  @override
-  void addListener(listener) {}
 
-  bool get hasListeners => throw UnimplementedError();
-
-  @override
-  void notifyListeners() {}
-
-  @override
-  void removeListener(listener) {}
 }
