@@ -3,7 +3,7 @@
 </h1>
 
 <p align="center">
-  <span>Link para download do apk no qrcode</span>
+  <span>Aponte a câmeara do seu celular para o qr code e faça o download do apk</span>
 </p>
 
 <p align="center">
@@ -11,8 +11,8 @@
 </p>
 
 <h1 align="center">
-  <img src="https://user-images.githubusercontent.com/40500767/104074004-dbb36c00-51ed-11eb-90ea-a9d20e1701c9.gif" width="300px;" alt="Glauco Nascimento"/>
-  <img src="https://user-images.githubusercontent.com/40500767/104074514-1cf84b80-51ef-11eb-968e-c73bc48175aa.gif" width="300px;" alt="Glauco Nascimento"/>
+  <img src="https://user-images.githubusercontent.com/40500767/104134330-a0d54380-5367-11eb-9578-ea6ab6b41a6b.gif" width="300px;" alt="IOS"/>
+  <img src="https://user-images.githubusercontent.com/40500767/104134406-0f1a0600-5368-11eb-8d07-2da571bffda8.gif" width="300px;" alt="ANDROID"/>
 </h1>
 
 

@@ -1,13 +1,12 @@
+import 'package:challenge_get_user/pages/requeste_error_page.dart';
 import 'package:flutter/material.dart';
-
-import 'package:challenge_get_user/bloc/list_controller.dart';
+import 'package:challenge_get_user/controllers/list_controller.dart';
 import 'package:challenge_get_user/components/skeleton.dart';
 import 'package:challenge_get_user/constants/color_constant.dart';
 import 'package:challenge_get_user/constants/string_constant.dart';
 import 'package:challenge_get_user/models/user.dart';
 
 class ListUserPage extends StatefulWidget {
-
   @override
   _ListUserPageState createState() => _ListUserPageState();
 }
@@ -17,7 +16,8 @@ class _ListUserPageState extends State<ListUserPage> {
 
   @override
   Widget build(BuildContext context) {
-    final List<User> user = ModalRoute.of(context).settings.arguments as List<User>;
+    final List<User> user =
+        ModalRoute.of(context).settings.arguments as List<User>;
 
     return Scaffold(
       appBar: AppBar(
@@ -40,52 +40,61 @@ class _ListUserPageState extends State<ListUserPage> {
                 case ConnectionState.waiting:
                 case ConnectionState.none:
                   return Center(
-                    child: Skeleton(length: user.length),
+                    child: user.length != 0 && user.length != null ? Skeleton(length: user.length) : CircularProgressIndicator(),
                   );
                 default:
                   if (snapshot.hasError)
                     return Container(
                       child: Center(
-                        child: Text('Tente Novamente mais tarde..'),
+                        child: Text(StringConstants.tryLate),
                       ),
                     );
                   else
                     return RefreshIndicator(
                       onRefresh: controller.reloader,
-                      child: ListView.builder(
-                        itemCount: user.length,
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.all(5.0),
-                            child: Card(
-                              elevation: 5,
-                              child: Column(
-                                children: [
-                                  ListTile(
-                                    leading: CircleAvatar(
-                                      backgroundImage: NetworkImage(
-                                          user[index].owner.avatarUrl),
+                      child: user.length != 0 
+                          ? ListView.builder(
+                              itemCount: user.length,
+                              itemBuilder: (context, index) {
+                                return Padding(
+                                  padding: const EdgeInsets.all(5.0),
+                                  child: Card(
+                                    elevation: 5,
+                                    child: Column(
+                                      children: [
+                                        ListTile(
+                                          leading: CircleAvatar(
+                                            backgroundImage: NetworkImage(
+                                                user[index].owner.avatarUrl),
+                                          ),
+                                          title: Text(
+                                            user[index].name,
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 18),
+                                          ),
+                                          subtitle: Text(
+                                            user[index].owner.login,
+                                            style: TextStyle(fontSize: 15),
+                                          ),
+                                          onTap: () {
+                                            controller
+                                                .getUrlRepository(user[index]);
+                                          },
+                                        ),
+                                      ],
                                     ),
-                                    title: Text(
-                                      user[index].name,
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 18),
-                                    ),
-                                    subtitle: Text(
-                                      user[index].owner.login,
-                                      style: TextStyle(fontSize: 15),
-                                    ),
-                                    onTap: () {
-                                      controller.getUrlRepository(user[index]);
-                                    },
                                   ),
-                                ],
-                              ),
+                                );
+                              },
+                            )
+                          : Column(
+                              children: [
+                                Container(
+                                  child: RequestErrorPage(function: controller.reloader,),
+                                ),
+                              ],
                             ),
-                          );
-                        },
-                      ),
                     );
               }
             },

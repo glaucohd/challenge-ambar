@@ -1,4 +1,4 @@
-import 'package:challenge_get_user/bloc/list_controller.dart';
+import 'package:challenge_get_user/controllers/list_controller.dart';
 import 'package:challenge_get_user/models/user.dart';
 import 'package:flutter/material.dart';
 import '../utils/routes.dart';
@@ -18,8 +18,9 @@ class _SplashScreenState extends State<SplashScreen> {
     controller.getUser().then((map) {
       user = map;
     });
-    Future.delayed(Duration(seconds: 2), () {
-      Navigator.of(context).pushNamed(Routes.LIST_USER, arguments: user);
+    Future.delayed(Duration(seconds: 3), () {
+      Navigator.of(context)
+          .pushReplacementNamed(Routes.LIST_USER, arguments: user);
     });
   }
 
@@ -29,9 +30,20 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Container(
         color: Colors.black,
         child: Center(
-          child: Image.asset(
-            'assets/images/logo_github.png',
-            height: 250,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                'assets/images/logo_github.png',
+                height: 250,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: LinearProgressIndicator(
+                ),
+              ),
+            ],
           ),
         ),
       ),
